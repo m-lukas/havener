@@ -27,9 +27,11 @@ import (
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	homedir "github.com/mitchellh/go-homedir"
+	"github.com/sirupsen/logrus"
 
 	"github.com/homeport/gonvenience/pkg/v1/term"
-	homedir "github.com/mitchellh/go-homedir"
+	"github.com/homeport/havener/pkg/messenger"
 )
 
 // rootCmd represents the base command when called without any subcommands
@@ -43,6 +45,17 @@ var rootCmd = &cobra.Command{
 
 See the individual commands to get the complete overview.
 `,
+	// Uncomment the following line if your bare application
+	// has an action associated with it:
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
+		viper.BindPFlags(cmd.Flags())
+
+		viper.BindPFlag("verbose", cmd.Flags().Lookup("verbose"))
+
+		if viper.GetBool("verbose") {
+			messenger.Messenger().SetLevel(logrus.DebugLevel)
+		}
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
