@@ -9,13 +9,14 @@
 ![havener](.docs/logo.png?raw=true "Havener logo - four stripes symbolising the rank of a harbourmaster inside a gearwheel")
 
 ## Table of Contents
-- [Introduction](#introducing-havener)
+- [Introduction](#introducing)
 - [Getting Started](#how-do-i-get-started)
 - [Quick Command Overview](#quick-command-overview)
 - [Configuration](#configuration)
 - [Contributing](#contributing)
 - [License](#license)
 
+<a name="introduction"/>
 ## Introducing Havener
 
 Convenience tool to handle tasks around [Containerized CF](https://www.pivotaltracker.com/n/projects/2192232) workloads on a Kubernetes cluster. It deploys multiple Helm Charts using a configuration file, which is used to add in a tiny amount of glue code that is sometimes needed to make things work. Under to cover, `havener` does the same calls that `kubectl` do, nothing special. That means that at the end you have a Helm Release just like you would have using `helm` alone.
