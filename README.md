@@ -10,9 +10,9 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Getting Started](#how-do-i-get-started)
-- [Quick Command Overview](#quick-command-overview)
-- [Configuration](#configuration)
+- [Getting Started](#getting-started)
+- [Quick Command Overview](#commands)
+- [Configuration](#config)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -21,6 +21,7 @@
 
 Convenience tool to handle tasks around [Containerized CF](https://www.pivotaltracker.com/n/projects/2192232) workloads on a Kubernetes cluster. It deploys multiple Helm Charts using a configuration file, which is used to add in a tiny amount of glue code that is sometimes needed to make things work. Under to cover, `havener` does the same calls that `kubectl` do, nothing special. That means that at the end you have a Helm Release just like you would have using `helm` alone.
 
+<a name="getting-started"></a>
 ## How do I get started
 
 There are different ways to get `havener`. You are free to pick the one that makes the most sense for your use-case.
@@ -46,6 +47,7 @@ There are different ways to get `havener`. You are free to pick the one that mak
   go get github.com/homeport/havener/cmd/havener
   ```
 
+<a name="commands"></a>
 ## Quick Command Overview
 
 Like `kubectl`, `havener` relies on the Kubernetes configuration that can be set via the `KUBECONFIG` environment variable. It can also be provided with the `--kubeconfig` flag, which takes the path to the YAML file (for example `$HOME/.kube/config`). `Havener` will use your local `helm` binary, so it is the user reponsability, to keep the `helm` binary in sync with tiller.
@@ -140,6 +142,7 @@ The `upgrade` command upgrades an existing helm release. A config file has to be
 
 The `version` command pretty much does what it says on the tin: it gives out the version currently used.
 
+<a name="config"></a>
 ## Configuration
 
 A `havener config file` provides an easy solution for configurating and deploying one or multiple Helm Charts. The `config` is saved as a `.yml-file` and is used by the `deploy` and `upgrade` commands. Besides information about the charts, it can overide the values.yml file and can contain further pre- and post-processing steps.
@@ -202,6 +205,7 @@ The `secret` operator provides a short-cut solution for retrieving environmental
 </br>Usage: `(( env ENVIRONMENTAL_VARIABLE_KEY ))`
 </br>Example: `(( env PWD ))`
 
+<a name="contributing"></a>
 ## Contributing
 
 We are happy to have other people contributing to the project. If you decide to do that, here's how to:
@@ -261,6 +265,7 @@ go mod tidy
 
 These steps will first remove the current Go modules setup to create an interim `dep` setup including the good old `vendor` directory. Once this is done, `go mod init` will migrate it to Go modules again. The test and build run are to make sure all other test and build related dependencies are on-board, too. The `kubegodep2dep` tool will do the dirty part to extract the correct package dependencies from the Kubernetes `godep` dependency setup combined with `client-go` requirements in one dependecy file.
 
+<a name="license"></a>
 ## License
 
 Licensed under [MIT License](https://github.com/homeport/havener/blob/master/LICENSE)
