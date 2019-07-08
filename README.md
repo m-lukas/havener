@@ -10,8 +10,8 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Getting Started](#getting-started)
-- [Quick Command Overview](#commands)
+- [How do I get started](#getting-started)
+- [Quick Command Overview](#commands-overview)
 - [Configuration](#config)
 - [Contributing](#contributing)
 - [License](#license)
@@ -47,7 +47,7 @@ There are different ways to get `havener`. You are free to pick the one that mak
   go get github.com/homeport/havener/cmd/havener
   ```
 
-<a name="commands"></a>
+<a name="commands-overview"></a>
 ## Quick Command Overview
 
 Like `kubectl`, `havener` relies on the Kubernetes configuration that can be set via the `KUBECONFIG` environment variable. It can also be provided with the `--kubeconfig` flag, which takes the path to the YAML file (for example `$HOME/.kube/config`). `Havener` will use your local `helm` binary, so it is the user reponsability, to keep the `helm` binary in sync with tiller.
@@ -193,7 +193,7 @@ Operators are written in the format `(( <name> <args> ))` and dynamically resolv
 ### shell
 The `shell` operator executes and resolves the value of shell commands.
 </br>Usage: `(( shell COMMAND ))`
-</br>Example: `(( shell minikube ip ))
+</br>Example: `(( shell minikube ip ))`
 
 ### secret
 The `secret` operator provides a short-cut solution for retrieving scret values of a namespace.
